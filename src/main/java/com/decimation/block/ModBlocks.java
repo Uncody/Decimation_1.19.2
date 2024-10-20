@@ -28,13 +28,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> TEST_JUMPY = registerBlock("test_jumpy",
             () -> new JumpyBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(6f).requiresCorrectToolForDrops()), ModCreativeModeTab.BLOCKS);
-
+    // Registry Block end
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registryBlockItem(name, toReturn, tab);
         return toReturn;
     }
-    // Registry Block end
     private static <T extends Block> RegistryObject<Item> registryBlockItem(String name, RegistryObject<T> block,
                                                                             CreativeModeTab tab) {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
