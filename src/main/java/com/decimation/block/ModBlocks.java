@@ -2,6 +2,7 @@ package com.decimation.block;
 
 import com.decimation.ProjectDecimation;
 import com.decimation.block.custom.JumpyBlock;
+import com.decimation.block.custom.StatesTestBlock;
 import com.decimation.item.ModCreativeModeTab;
 import com.decimation.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -28,6 +29,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> TEST_JUMPY = registerBlock("test_jumpy",
             () -> new JumpyBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(6f).requiresCorrectToolForDrops()), ModCreativeModeTab.BLOCKS);
+
+    public static final RegistryObject<Block> TEST_STATES = registerBlock("test_states",
+            () -> new StatesTestBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(6f).requiresCorrectToolForDrops()
+                    .lightLevel(state -> state.getValue(StatesTestBlock.CANADDEFFECT) ? 15:0)), ModCreativeModeTab.BLOCKS);
     // Registry Block end
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
