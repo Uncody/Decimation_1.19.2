@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "canaddeffect=true": {"model":  "decimation:block/test_states_on"},
+    "canaddeffect=false": {"model":  "decimation:block/test_states_off"}
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": {"model":  "decimation:block/test_block"}
+  }
+}
