@@ -21,7 +21,9 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, ProjectDecimation.MOD_ID);
-    // Registry Block
+    /**
+     * Registry Block
+     */
     public static final RegistryObject<Block> TEST_BLOCK = registerBlock("test_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
             .strength(6f).requiresCorrectToolForDrops()), ModCreativeModeTab.BLOCKS);
@@ -33,8 +35,10 @@ public class ModBlocks {
     public static final RegistryObject<Block> TEST_STATES = registerBlock("test_states",
             () -> new StatesTestBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(6f).requiresCorrectToolForDrops()
-                    .lightLevel(state -> state.getValue(StatesTestBlock.CANADDEFFECT) ? 15:0)), ModCreativeModeTab.BLOCKS);
-    // Registry Block end
+                    .lightLevel(state -> state.getValue(StatesTestBlock.LIT) ? 15:0)), ModCreativeModeTab.BLOCKS);
+    /**
+     * Other Things
+     */
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registryBlockItem(name, toReturn, tab);

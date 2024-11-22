@@ -13,7 +13,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public class StatesTestBlock extends Block {
 
-    public static final BooleanProperty CANADDEFFECT = BooleanProperty.create("canaddeffect");
+    public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
 
     public StatesTestBlock(Properties pProperties) {
@@ -24,7 +24,7 @@ public class StatesTestBlock extends Block {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
 
         if (!pLevel.isClientSide() && pHand == InteractionHand.MAIN_HAND) {
-            pLevel.setBlock(pPos, pState.cycle(CANADDEFFECT), 3);
+            pLevel.setBlock(pPos, pState.cycle(LIT), 3);
         }
 
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
@@ -32,6 +32,6 @@ public class StatesTestBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(CANADDEFFECT);
+        pBuilder.add(LIT);
     }
 }
