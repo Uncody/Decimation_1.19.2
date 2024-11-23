@@ -4,6 +4,9 @@
   "block.decimation.test_block": "Test Block",
   "block.decimation.test_states": "Test States Block",
 
+  "key.category.decimation.decimation": "Decimation",
+  "key.decimation.test_button": "Test Key",
+
   "itemGroup.items": "Items",
   "itemGroup.blocks": "Blocks"
 }

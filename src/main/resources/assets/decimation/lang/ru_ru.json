@@ -4,6 +4,9 @@
   "block.decimation.test_block": "Тестовый Блок",
   "block.decimation.test_states": "Тестовый Блок Стейтов",
 
+  "key.category.decimation.decimation": "Decimation",
+  "key.decimation.test_button": "Тестовая Кнопка",
+
   "itemGroup.items": "Вещи",
   "itemGroup.blocks": "Блоки"
 }
