@@ -16,6 +16,8 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event) {
             if (KeyBinding.TEST_KEY.consumeClick()) {
+                //Проверка на всякий случай, может вызвать NullPointer
+                if(Minecraft.getInstance().player == null) return;
                 Minecraft.getInstance().player.sendSystemMessage(Component.literal("Test Text"));
             }
         }

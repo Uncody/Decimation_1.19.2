@@ -18,19 +18,17 @@ public class EightBallItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, InteractionHand hand) {
+        //Опять не понятно зачем проверка на руку?
         if(!level.isClientSide() && hand == InteractionHand.MAIN_HAND){
             outputRandNum(player);
+             //Небольшой мем - этот кулдаун пропадёт при перезаходе в игру.
             player.getCooldowns().addCooldown(this, 20);
         }
         return super.use(level, player, hand);
     }
-
-    private int getRandNumb() {
-        return RandomSource.createNewThreadLocalInstance().nextInt(10);
-    }
-
+    //Удалил ненужный метод, рандом можно получать из игрока.
     private void outputRandNum(@NotNull Player player){
-        player.sendSystemMessage(Component.literal("Ваш номер: " + getRandNumb()));
+        player.sendSystemMessage(Component.literal("Ваш номер: " + player.getRandom().nextInt(10)));
     }
 
 }

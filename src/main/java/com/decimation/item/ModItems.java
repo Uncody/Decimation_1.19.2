@@ -18,6 +18,7 @@ public class ModItems {
     public static final RegistryObject<Item> RANDNUM = ITEMS.register("randnumber",
             () -> new EightBallItem(new Item.Properties().tab(ModCreativeModeTab.ITEMS).stacksTo(1 )));
 
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

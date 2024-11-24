@@ -22,7 +22,8 @@ public class JumpyBlock extends Block {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if (!level.isClientSide() && hand == InteractionHand.MAIN_HAND) {
+        if (!level.isClientSide()) {
+            //Проверка на руку бесполезна, отправляться будет лишь 1 раз если есть проверка на уровень.
             player.sendSystemMessage(Component.literal("Test Text, must be sended in chat only 1 time at click"));
         }
         return super.use(state, level, pos, player, hand, result);
@@ -30,10 +31,13 @@ public class JumpyBlock extends Block {
 
     @Override
     public void stepOn(Level level, BlockPos blockPos, BlockState blockState, @NotNull Entity entity){
+        //в void функциях удобнее так делать.
+        if(!(entity instanceof LivingEntity livingEntity)) return;
+        //Проверка на сервер, чтобы не было возможных проблем.
+        if(level.isClientSide()) return;
 
-        if(entity instanceof LivingEntity livingEntity){
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.JUMP, 200));
-        }
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.JUMP, 200));
+
         super.stepOn(level, blockPos, blockState, entity);
     }
 }
